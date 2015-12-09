@@ -274,23 +274,24 @@ public class GRBcarSharingSolver {
 		}
 
 		// Print the solution
-		System.out.println("\n Solution:");
-		
-		
+		System.out.println("SOLUTION:\n");
+
 		for (int k = 0; k < nDrivers; ++k) {
 			LinkedList<Integer> passengerLists = new LinkedList<Integer>();
+			System.out.println("  Driver " +Integer.toString(k)+":");
 			for (int i = 0; i < nNodes; ++i) {
 				for (int j = 0; j < nNodes; ++j) {
 					if (travelFromTo[i][j][k].get(GRB.DoubleAttr.X) == 1) {
-						System.out.println("Driver " +Integer.toString(k)+ " go from " +Integer.toString(i)+ " to "+Integer.toString(j));
+						System.out.println("    go from " +Integer.toString(i)+ " to "+Integer.toString(j));
 						if (j < nPassengers) {
 							passengerLists.add(j);
 						}
 					}
 				}
 			}
-			System.out.println("\n Driver "+Integer.toString(k)+ " passengers:");
-			System.out.println(passengerLists);
+			
+			System.out.print("\n    passengers list: ");
+			System.out.print(passengerLists);
 			System.out.println("\n");
 		}
 		
